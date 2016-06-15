@@ -1,14 +1,14 @@
-export class StreamApiService {
-  constructor ($log, $http) {
+export class RegistrationApiService {
+  constructor ($resource) {
     'ngInject';
 
     this.$log = $log;
     this.$http = $http;
-    this.apiHost = 'http://localhost:5000';
+    this.apiHost = 'http://localhost:5000/api';
   }
 
-  getStreamsList() {
-    return this.$http.get(this.apiHost + '/streams')
+  register(user) {
+    return this.$http.post(this.apiHost + '/users')
       .then((response) => {
         return response.data
       })

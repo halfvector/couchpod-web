@@ -3,28 +3,38 @@ export function routerConfig($stateProvider, $urlRouterProvider, $locationProvid
   $stateProvider
     .state('home', {
       url: '/',
+      parent: 'app',
       templateUrl: 'app/main/main.html',
       controller: 'MainController',
       controllerAs: 'vm'
     })
     .state('login', {
-      url: '/welcome',
+      url: '/login',
       templateUrl: 'app/login/login.html',
       controller: 'LoginController',
       controllerAs: 'vm'
     })
-    //.state('stream', {
-    //  url: '/streams',
-    //  abstract: true
-    //})
-    .state('stream_list', {
+    .state('registration', {
+      url: '/registration',
+      parent: 'app',
+      templateUrl: 'app/registration/registration.html',
+      controller: 'RegistrationController',
+      controllerAs: 'vm'
+    })
+    .state('streams', {
       url: '/streams',
+      parent: 'app',
+      abstract: true,
+      template: '<ui-view/>'
+    })
+    .state('streams.list', {
+      url: '',
       templateUrl: 'app/streams/stream.list.html',
       controller: 'StreamListController',
       controllerAs: 'vm'
     })
-    .state('stream_details', {
-      url: '/streams/:id',
+    .state('streams.details', {
+      url: '/:id',
       templateUrl: 'app/streams/stream.details.html',
       controller: 'StreamDetailsController',
       controllerAs: 'vm'

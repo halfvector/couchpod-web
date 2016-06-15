@@ -1,10 +1,11 @@
-export default class LoginController {
+export class RegistrationController {
   constructor($log, $state, $resource) {
     'ngInject';
 
-    var userApi = $resource('http://localhost:5000/users/tokens');
+    var userApi = $resource('http://localhost:5000/users/:id', {id: '@id'});
 
     this.user = {
+      fullName: "",
       email: "",
       password: ""
     };
@@ -12,19 +13,10 @@ export default class LoginController {
     this.serverErrors = {};
 
     this.submit = function () {
-      $log.debug("login user", this.user);
+      $log.debug("user", this.user);
 
       userApi.save(this.user)
         .$promise
-      //fetch('http://localhost:5000/users/tokens', {
-      //  method: 'POST',
-      //  credentials: 'include',
-      //  headers: {
-      //    'Accept': 'application/json',
-      //    'Content-Type': 'application/json'
-      //  },
-      //  body: JSON.stringify(this.user)
-      //})
         .then(() =>
           // user registered and initial login session created. go to dashboard.
           $state.go('home')

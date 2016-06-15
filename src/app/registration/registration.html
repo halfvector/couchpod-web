@@ -2,6 +2,16 @@
   <div class="md-whiteframe-z2" flex-sm="90" flex-gt-sm="70" flex-gt-md="50" layout-padding>
     <form name="registerForm" data-ng-submit="vm.submit()" flex="100" layout="column">
       <md-input-container>
+        <label>Name</label>
+        <input ng-model="vm.user.fullName" name="fullName" required>
+        <div ng-if="registerForm.fullName.$touched" ng-messages="registerForm.fullName.$error">
+          <div ng-message="required">
+            Need a name. You can change this later.
+          </div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
         <label>Email</label>
         <input ng-model="vm.user.email" type="email" name="email" required>
         <div ng-if="registerForm.email.$touched" ng-messages="registerForm.email.$error">
@@ -13,8 +23,8 @@
           </div>
         </div>
         <div ng-if="vm.serverErrors" ng-messages="vm.serverErrors">
-          <ng-message when="404">
-            User with the specified email and password not found.
+          <ng-message when="409">
+            User already exists with this email. Try logging in instead.
           </ng-message>
         </div>
       </md-input-container>
@@ -32,7 +42,7 @@
       <div layout="row">
         <div flex offset="33"></div>
         <md-button flex>cancel</md-button>
-        <md-button type="submit" flex class="md-raised md-primary">Login</md-button>
+        <md-button type="submit" flex class="md-raised md-primary">Register</md-button>
       </div>
 
     </form>

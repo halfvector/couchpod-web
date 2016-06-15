@@ -27,23 +27,20 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-
-      <md-button aria-label="Go Back">
-        Go Back
-      </md-button>
-      <h2>
-        <span>Couchpod</span>
-      </h2>
-      <span flex=""></span>
-      <md-button class="md-fab md-primary">
-        <i class="fa fa-list"></i>
-      </md-button>
-      <md-button class="md-fab md-mini md-primary">
-        <i class="fa fa-microphone"></i>
-      </md-button>
-
-    </section>
+    <md-content><md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Couchpod</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-fab md-mini md-primary">
+          <i class="fa fa-list"></i>
+        </md-button>
+        <md-button class="md-fab md-mini md-primary">
+          <i class="fa fa-microphone"></i>
+        </md-button>
+      </div>
+    </md-toolbar></md-content>
 
     <!--<md-toolbar>-->
       <!--<div class="md-toolbar-tools">-->
@@ -63,7 +60,9 @@
       <!--</div>-->
     <!--</md-toolbar>-->
 
-    <div ui-view></div>
+    <md-content layout-padding="5">
+      <div ui-view></div>
+    </md-content>
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
