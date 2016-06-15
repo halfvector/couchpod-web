@@ -1,13 +1,13 @@
 /* global malarkey:false, moment:false */
 
-import { config } from './index.config';
-import { routerConfig } from './index.route';
-import { runBlock } from './index.run';
-import { MainController } from './main/main.controller';
-import { StreamListController } from './streams/stream.list.controller';
-import { StreamDetailsController } from './streams/stream.details.controller';
-import { StreamApiService } from '../app/streams/stream.service';
-import { RegistrationController } from '../app/registration/registration.controller'
+import config from './index.config';
+import routerConfig from './index.route';
+import runBlock from './index.run';
+import MainController from './main/main.controller';
+import StreamListController from './streams/stream.list.controller';
+import StreamDetailsController from './streams/stream.details.controller';
+import StreamApiService from '../app/streams/stream.service';
+import RegistrationController from '../app/registration/registration.controller'
 import LoginController from '../app/login/login.controller'
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';

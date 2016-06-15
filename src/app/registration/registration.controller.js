@@ -1,4 +1,4 @@
-export class RegistrationController {
+export default class RegistrationController {
   constructor($log, $state, $resource) {
     'ngInject';
 

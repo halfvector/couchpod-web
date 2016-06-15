@@ -1,4 +1,4 @@
-export class StreamDetailsController {
+export default class StreamDetailsController {
   constructor ($log, StreamApiService) {
     'ngInject';
 

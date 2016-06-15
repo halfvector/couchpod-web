@@ -1,4 +1,4 @@
-export class StreamApiService {
+export default class StreamApiService {
   constructor ($log, $http) {
     'ngInject';
 

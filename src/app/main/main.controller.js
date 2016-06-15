@@ -1,4 +1,4 @@
-export class MainController {
+export default class MainController {
   constructor() {
     'ngInject';
   }
