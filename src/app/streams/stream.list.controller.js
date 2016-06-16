@@ -1,24 +1,33 @@
 export default class StreamListController {
-  constructor ($log, StreamApiService) {
+  constructor($log, StreamApiService, $resource) {
     'ngInject';
 
-    StreamApiService.getStreamsList()
-      .then(streams => $log.log("got streams", streams));
+    this.newStream = {
+      streamName: "",
+      isPublic: true
+    };
+
+    this.api = $resource('http://localhost:5000/streams/:id', {id: '@id'});
+    this.refreshStreamsList();
   }
 
-  activate($timeout, webDevTec) {
-    this.getWebDevTec(webDevTec);
-    $timeout(() => {
-      this.classAnimation = 'rubberBand';
-    }, 4000);
+  refreshStreamsList() {
+    this.streams = this.api.query();
   }
 
-  getWebDevTec(webDevTec) {
-    this.awesomeThings = webDevTec.getTec();
+  createStream() {
+    console.log("creating new stream", this.newStream);
 
-    angular.forEach(this.awesomeThings, (awesomeThing) => {
-      awesomeThing.rank = Math.random();
-    });
+    var dto = {
+      streamName: this.newStream.streamName,
+      visibility: this.newStream.isPublic ? 1 : 0,
+      description: ""
+    };
+
+    this.api.save(dto).$promise
+      .then(() =>this.refreshStreamsList())
+      .catch(err => {
+        console.error("Failed to create new stream", err);
+      });
   }
-
 }

@@ -1,3 +1,43 @@
-<div>
-  STREAMS LIST
+<div class="md-whiteframe-z1" flex-gt-sm="50">
+  <md-toolbar class="md-accent">
+    <div class="md-toolbar-tools">
+      <h3>Create Stream</h3>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <form name="newStreamForm" data-ng-submit="vm.createStream()">
+      <md-input-container class="md-block">
+        <label for="streamName">Stream Name</label>
+        <input md-maxlength="32" required md-no-asterisk id="streamName" name="streamName"
+               ng-model="vm.newStream.streamName">
+
+        <div ng-messages="newStreamForm.streamName.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 32 characters long.</div>
+        </div>
+      </md-input-container>
+
+      <div>
+        <md-checkbox ng-model="vm.newStream.isPublic">
+          Make stream public (visible to everyone)
+        </md-checkbox>
+      </div>
+
+      <md-button class="md-raised" type="submit">
+        Create
+      </md-button>
+
+    </form>
+  </md-content>
 </div>
+
+<br>
+
+<md-subheader>Streams</md-subheader>
+<md-divider></md-divider>
+<md-list>
+  <md-list-item ng-repeat="stream in vm.streams">
+    <p> {{ stream.streamName }} </p>
+    <md-switch class="md-secondary" ng-model="stream.isPublic"></md-switch>
+  </md-list-item>
+</md-list>
